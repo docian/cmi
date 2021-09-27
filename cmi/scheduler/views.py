@@ -1,7 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpRequest
-from rest_framework.status import HTTP_200_OK
+from django.http import HttpRequest, HttpResponseRedirect
+from django.views.generic import ListView
+from .models import Pacient
+from .forms import PacientForm
+
+class PacientsListView(ListView):
+    model = Pacient
 
 # Create your views here.
-def pacient(request:HttpRequest):
-    return HttpResponse(status=200)
+def get_pacient(request:HttpRequest):
+    if request.method == "POST":
+        form = PacientForm(request.POST)
+        # name = form.data.name
+    else:
+        form = PacientForm()
+    return render(request, 'scheduler/pacient.html', {'form':form})

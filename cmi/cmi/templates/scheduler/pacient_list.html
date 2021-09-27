@@ -1,0 +1,10 @@
+{% extends "scheduler/base.html" %}
+{% block title %}Pacienti{% endblock %}
+{% block content %}
+    <h2>Pacienti</h2>
+    <ul>
+        {% for pacient in object_list %}
+            <li>{{pacient.id}}.Nume:{{ pacient.name }}  Prenume:{{pacient.surname}}  CNP:{{pacient.cnp}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
