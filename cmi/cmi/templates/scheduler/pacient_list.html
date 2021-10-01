@@ -1,0 +1,38 @@
+{% extends "scheduler/base.html" %}
+{% block title %}Pacienti{% endblock %}
+{% block content %}
+    <head>
+        <h2>Pacienti</h2>
+        <style>
+            table{
+                border-spacing:20px 0;
+                border-width: medium;
+            }
+            th{
+                text-align: center;
+                font-size: 20px;
+                color: brown;
+            }
+            td{
+                text-align: center;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+    <table>
+    <thead>
+        <tr>
+            <th>Nume</th><th>Prenume</th><th>CNP</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pacient in object_list %}
+        <tr>
+            <td>{{ pacient.name }}</td><td>{{pacient.surname}}</td><td>{{pacient.cnp}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    </body>
+{% endblock %}

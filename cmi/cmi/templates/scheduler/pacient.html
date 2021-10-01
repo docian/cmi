@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Pacient</title>
+</head>
+<body>
+        <style>
+            table{
+                border-spacing:24px 0;
+                border-width: medium;
+            }
+            th{
+                text-align: center;
+                font-size: 20px;
+                color: brown;
+            }
+            td{
+                text-align: center;
+                font-size: 20px;
+            }
+        </style>
+<form action="/pacient/" method="post">
+    {% csrf_token %}
+    <table>
+        <tbody>
+            <tr>
+                <td>{{form.name.label}}</td><td>{{form.name}}</td>
+            </tr>
+            <tr>
+                <td>{{form.surname.label}}</td><td>{{form.surname}}</td>
+            </tr>
+            <tr>
+                <td>{{form.cnp.label}}</td><td>{{form.cnp}}</td>
+            </tr>
+            <tr>
+                <td>{{form.phone.label}}</td><td>{{form.phone}}</td>
+            </tr>
+            <tr>
+                <td>{{form.email.label}}<td>{{form.email}}</td>
+            </tr>
+            <tr><td rowspan="2"><input type="submit" value="OK"></td></tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>
