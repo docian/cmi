@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpRequest, HttpResponseRedirect
 from django.views.generic import ListView
-from .models import Pacient
+from .models import Pacient,TimeTable
 from .forms import PacientForm
+from .serializer import *
 
 class PacientsListView(ListView):
     model = Pacient
@@ -19,3 +20,19 @@ def get_pacient(request:HttpRequest):
     else:
         form = PacientForm()
     return render(request, 'scheduler/pacient.html', {'form':form})
+
+from rest_framework import viewsets
+
+class PacientViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list` and `retrieve` actions.
+    """
+    queryset = Pacient.objects.all()
+    serializer_class = PacientSerializer
+
+class TimeTableViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list` and `retrieve` actions.
+    """
+    queryset = TimeTable.objects.all()
+    serializer_class = TimeTableSerializer
